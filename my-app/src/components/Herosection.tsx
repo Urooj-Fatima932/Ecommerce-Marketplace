@@ -43,7 +43,7 @@ function Hero() {
           <Button text="Shop Air Max" className="m-3" />
         </div>
       </div>
-      <Carousel/>
+      <Carousel name="Best Of Air Max"/>
       <section className="Featured width-full my-[48px]">
 <div className="w-[93%] mx-auto"><h1 className="font-semibold text-xl">Featured</h1><Image  src="/images/Banner2.jpg" width={1300} height={700} alt="man wearing nike shoe" layout="responsive"/></div>
       </section>

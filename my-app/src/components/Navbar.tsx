@@ -36,9 +36,7 @@ function MyNav() {
                 Product Details
               </Link>
             </li>
-            <li>
-              <Link href="/Men" className="hover:text-gray-500">Men</Link>
-            </li>
+           
             <li>
               <Link href="/ContactUs" className="hover:text-gray-500">
                 Contact Us
@@ -60,7 +58,7 @@ function MyNav() {
 
             {/* Icons */}
             <Link href="/Product_Details"><Heart className="cursor-pointer" /></Link>
-            <Link href="/Men"><ShoppingBag className="cursor-pointer" /></Link>
+            <Link href="/cart"><ShoppingBag className="cursor-pointer" /></Link>
 
             {/* Menu Icon for Small Screens */}
             <div
@@ -87,9 +85,7 @@ function MyNav() {
                 </Link>
               </li>
               <li>
-                <Link href="/Men" className="hover:text-gray-500" onClick={toggleMenu}>
-                  Men
-                </Link>
+                
               </li>
               <li>
                 <Link href="/ContactUs" className="hover:text-gray-500" onClick={toggleMenu}>
