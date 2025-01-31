@@ -11,7 +11,7 @@ import { fetchMenShoes } from '@/lib/fetchMenShoes';
 
 function Carousel2() {
   interface Product {
-      productName: string;
+      name: string;
       image: string;
       inventory: string;
       price: number;
@@ -90,7 +90,7 @@ function Carousel2() {
                 {wshoes.map((product) => (
                                <div key={product._id} className="p-4 flex flex-col  border-none outline-none group relative">
                                  <div className='relative overflow-hidden'>
-                                 <Image className='object-cover w-full h-auto transition-all group-hover:brightness-75' src={product.image} alt={product.productName} width={441} height={441} />
+                                 <Image className='object-cover w-full h-auto transition-all group-hover:brightness-75' src={product.image} alt={product.name} width={441} height={441} />
                                    {/* "Shop" Text */}
                                    <div className="absolute inset-0 flex items-center justify-center">
                                    <span
@@ -100,8 +100,9 @@ function Carousel2() {
                                    </span>
                                  </div>
                                  </div>
-                                 <div className="text-lg font-semibold text-Cblack flex justify-between pt-3 px-2">
-                                   <p>{product.productName}</p>
+                                 <div><p className='font-[500] text-orange-600 pt-2 px-1'>{product.status}</p></div>
+                                 <div className=" font-[600] text-Cblack flex justify-between pt-1 px-2">
+                                   <p>{product.name}</p>
                                    <p>Rs.{product.price}</p>
                                  </div>
                                  <p className="text-sm text-tgray mx-2">{product.category}</p>

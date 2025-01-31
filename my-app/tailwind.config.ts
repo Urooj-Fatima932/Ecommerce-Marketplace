@@ -12,7 +12,17 @@ export default {
   		colors: {
   			bgray: '#F5F5F5',
   			Cblack: '#111111',
-			tgray:'#757575'
+  			tgray: '#757575',
+  			sidebar: {
+  				DEFAULT: 'hsl(var(--sidebar-background))',
+  				foreground: 'hsl(var(--sidebar-foreground))',
+  				primary: 'hsl(var(--sidebar-primary))',
+  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  				accent: 'hsl(var(--sidebar-accent))',
+  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+  				border: 'hsl(var(--sidebar-border))',
+  				ring: 'hsl(var(--sidebar-ring))'
+  			}
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

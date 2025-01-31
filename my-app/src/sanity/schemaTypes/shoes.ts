@@ -16,6 +16,24 @@ export default {
         description: 'Price of the product',
       },
       {
+        name: 'category',
+        type: 'string',
+        title: 'Category',
+        description: 'Category of the product',
+      },
+      {
+        name: 'status',
+        type: 'string',
+        title: 'Status',
+        description: 'Status of the product',
+      },
+      {
+        name: 'inventory',
+        type: 'string',
+        title: 'Inventory',
+        description: 'Inventory of the product',
+      },
+      {
         name: 'image',
         type: 'image',
         title: 'Image',

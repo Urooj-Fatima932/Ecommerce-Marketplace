@@ -1,26 +1,22 @@
-'use client'
-import React from "react";
+import * as React from "react"
 
-interface InputFieldProps {
-  placeholder?: string; // Optional placeholder text
-  type?: string;        // Input type (default: "text")
-  className?: string;   // Additional custom class names
-}
+import { cn } from "@/lib/utils"
 
-const InputField: React.FC<InputFieldProps> = ({
-  placeholder = "Enter text",
-  type = "text",
-  className = "",
-}) => {
-  return (
-   
+const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
+  ({ className, type, ...props }, ref) => {
+    return (
       <input
         type={type}
-        placeholder={placeholder}
-        className={`w-full my-3 max-w-[300px] sm:max-w-[400px] md:max-w-[500px] px-4 py-2 border border-gray-400 rounded-[7px] focus:outline-none focus:ring-1  focus:border-zinc-500  ${className}`}
+        className={cn(
+          "flex h-9 w-full rounded-md border border-neutral-200 bg-transparent px-3 py-1 text-base shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-neutral-950 placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:border-neutral-800 dark:file:text-neutral-50 dark:placeholder:text-neutral-400 dark:focus-visible:ring-neutral-300",
+          className
+        )}
+        ref={ref}
+        {...props}
       />
-   
-  );
-};
+    )
+  }
+)
+Input.displayName = "Input"
 
-export default InputField;
+export { Input }

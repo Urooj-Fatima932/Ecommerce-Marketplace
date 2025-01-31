@@ -7,7 +7,7 @@ import Carousel from "@/components/carousel";
 function Cart() {
   return (
     <main className="px-4 sm:px-6 md:px-8">
-      <div className="w-full md:w-[75%] mx-auto mt-8 flex flex-col lg:flex-row gap-5">
+      <div className="w-full mx-[3] md:w-[75%] md:mx-auto mt-8 flex flex-col lg:flex-row gap-5">
         {/* Left Section */}
         <div className="w-full lg:w-[70%] h-auto">
           
