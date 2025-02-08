@@ -6,10 +6,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { fetchSanityData } from '@/lib/sanityData';
+import Link from 'next/link';
  
 function Carousel3() {
   interface Product {
-    name: string;
+    productName: string;
     image: string;
     inventory: string;
     price: number;
@@ -87,10 +88,11 @@ function Carousel3() {
 
             </div >
             <Slider ref={sliderRef} {...settings}>
-              {wshoes.map((product,key) => (
-                <div key={product.name} className="p-4 flex flex-col  border-none outline-none group relative">
+              {wshoes.map((product) => (
+                <Link href={`Product_Details/${product._id}`} key={product._id}>
+                <div  className="p-4  flex flex-col  border-none outline-none group relative">
                   <div className='relative overflow-hidden'>
-                  <Image className='object-cover w-full h-auto transition-all group-hover:brightness-75' src={product.image} alt={product.name} width={441} height={441} />
+                  <Image className='object-cover w-full h-auto transition-all group-hover:brightness-75' src={product.image} alt={product.productName} width={441} height={441} />
                     {/* "Shop" Text */}
                     <div className="absolute inset-0 flex items-center justify-center">
                     <span
@@ -102,11 +104,12 @@ function Carousel3() {
                   </div>
                   <div><p className='font-[500] text-orange-600 pt-2 px-1'>{product.status}</p></div>
                   <div className=" font-[600] text-Cblack flex justify-between pt-1 px-2">
-                    <p>{product.name}</p>
+                    <p>{product.productName}</p>
                     <p>Rs.{product.price}</p>
                   </div>
                   <p className="text-sm text-tgray mx-2">{product.category}</p>
                 </div>
+                </Link>
               ))}
             </Slider>
           </div>

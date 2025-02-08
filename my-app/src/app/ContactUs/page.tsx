@@ -3,7 +3,7 @@ import Button from "@/components/Button";
 import Link from "next/link";
 import { ThumbsUp, ThumbsDown } from "lucide-react";
 import Image from "next/image";
-import InputField from "@/components/ui/input";
+import {Input} from "@/components/ui/input";
 
 
 function ContactUs() {
@@ -13,11 +13,12 @@ function ContactUs() {
                 <div className="wrapper text-[#111111] text-sm">
                     <section className="get-help text-center mt-5 ">
                         <h1 className="text-4xl font-semibold">GET HELP</h1>
-                        <InputField
-                           type="text"
-                            placeholder="What can we help you with?"
-
+                        <div className="w-[400px] flex mx-auto mt-5">
+                        <Input
+                        type="text"
+                        placeholder="What can we help you with?"
                         />
+                        </div>
                     </section>
                     <section className="grid grid-cols-1 lg:grid-cols-[75%_25%] gap-6">
                         <div className="p-4 sm:p-12 text-lg">
@@ -109,7 +110,7 @@ function ContactUs() {
         </ul></div>
 
 
-                            <div className="text-center flex flex-col justify-center items-center gap-4"><Image src="/images/envelope"
+                            <div className="text-center flex flex-col justify-center items-center gap-4"><Image src="/images/envelope.png"
     width={64}
     height={64}
     alt="envelope"/>

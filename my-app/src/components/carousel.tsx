@@ -116,9 +116,9 @@ interface props{
           </div>
           <Slider ref={sliderRef} {...settings}>
             {wshoes.map((product) => (
-              <Link href="">
+              <Link href={`Product_Details/${product._id}`} key={product._id}>
               <div
-                key={product._id}
+                
                 className="p-4 flex flex-col border-none outline-none group relative"
               >
                 {/* Image Section */}

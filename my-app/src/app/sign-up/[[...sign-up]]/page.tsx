@@ -1,14 +1,14 @@
 'use client'
 import * as Clerk from '@clerk/elements/common'
-import * as SignIn from '@clerk/elements/sign-in'
+import * as SignUp from '@clerk/elements/sign-up'
 import Image from 'next/image'
 import { RiGithubFill, RiGoogleFill } from 'react-icons/ri'
 
-export default function SignInPage() {
+export default function SignUpPage() {
   return (
     <main className="min-h-screen flex items-center justify-center">
       <div className="w-[93%] mx-auto">
-        <div className="h-auto w-[380px] mx-auto my-10 p-4 sm:p-6 bg-white rounded-lg">
+        <div className="h-auto w-[380px] shadow-md mx-auto my-10 p-4 sm:p-6 bg-white rounded-lg">
           <div className="w-full mx-auto text-center">
             <div className="flex justify-center">
               <Image
@@ -20,14 +20,15 @@ export default function SignInPage() {
               />
             </div>
             <h1 className="text-2xl font-semibold mb-4">
-              WELCOME BACK
+              BECOME A NIKE MEMBER
             </h1>
             <p className="text-sm text-gray-600 mb-6">
-              Log in to your Nike Member profile to access exclusive products, inspiration, and community.
+              Create your Nike Member profile and get first access to the very
+              best of Nike products, inspiration, and community.
             </p>
 
-            <SignIn.Root>
-              <SignIn.Step name="start">
+            <SignUp.Root>
+              <SignUp.Step name="start">
                 <div className='flex justify-between gap-2'>
                   <Clerk.Connection 
                     name="google"
@@ -51,7 +52,7 @@ export default function SignInPage() {
 
                 <p className='text-gray-500 w-full text-center my-4 text-xs'>or</p>
                 <h3 className='text-[#1f1f1f] w-full font-light text-lg text-center mb-4'>
-                  Log In With Email
+                  Sign Up With Email
                 </h3>
 
                 <Clerk.Field name="emailAddress">
@@ -77,16 +78,20 @@ export default function SignInPage() {
                   <Clerk.FieldError className='text-xs text-red-600 mt-1' />
                 </Clerk.Field>
 
-                <SignIn.Action
+                <div className='my-4'>
+                  <SignUp.Captcha />
+                </div>
+
+                <SignUp.Action
                   submit
                   className='w-full bg-black text-white font-medium py-2 px-5 rounded-[20px] hover:bg-zinc-800 transition-colors'
                 >
-                  Log In
-                </SignIn.Action>
-              </SignIn.Step>
+                  Sign Up
+                </SignUp.Action>
+              </SignUp.Step>
 
-              <SignIn.Step name="verifications">
-                <SignIn.Strategy name="email_code">
+              <SignUp.Step name="verifications">
+                <SignUp.Strategy name="email_code">
                   <h2 className="text-lg font-semibold mb-4">Check your email</h2>
                   <p className="text-sm text-gray-600 mb-6">
                     We've sent a verification code to your email address
@@ -103,15 +108,15 @@ export default function SignInPage() {
                     <Clerk.FieldError className='text-xs text-red-600 mt-1' />
                   </Clerk.Field>
 
-                  <SignIn.Action
+                  <SignUp.Action
                     submit
                     className='w-full bg-black text-white font-medium py-2 px-5 rounded-[20px] hover:bg-zinc-800 transition-colors mt-4'
                   >
                     Verify Email
-                  </SignIn.Action>
-                </SignIn.Strategy>
-              </SignIn.Step>
-            </SignIn.Root>
+                  </SignUp.Action>
+                </SignUp.Strategy>
+              </SignUp.Step>
+            </SignUp.Root>
           </div>
         </div>
       </div>

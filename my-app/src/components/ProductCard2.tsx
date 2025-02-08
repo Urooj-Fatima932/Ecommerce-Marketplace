@@ -1,7 +1,6 @@
 // ProductCard.tsx
 'use client'
 import Image, { StaticImageData } from 'next/image';
-import Link from 'next/link';
 
 interface ProductCardProps {
   image: StaticImageData | string; // Support both StaticImageData and string for image
@@ -15,16 +14,16 @@ interface ProductCardProps {
   alt:string;
 }
 
-const ProductCard2: React.FC<ProductCardProps> = ({ image, name,alt, price,color, category,className,status,href = '#'}) => {
+const ProductCard2: React.FC<ProductCardProps> = ({ image, name,alt="Image", price,color, category,className,status,href = '#'}) => {
   return (
     <main>
-    <Link href={href}>
+    
               <div
                
-                className="p-4 flex flex-col border-none outline-none group relative"
+                className="p-4  overflow-hidden flex flex-col border-none outline-none group relative shadow-md"
               >
                 {/* Image Section */}
-                <div className="relative overflow-hidden">
+                <div className="relative max-h-[75%] overflow-hidden">
                   <Image
                     src={image}
                     alt={alt}
@@ -45,13 +44,13 @@ const ProductCard2: React.FC<ProductCardProps> = ({ image, name,alt, price,color
 
                 {/* Product Details */}
                 <div><p className='font-[500] text-orange-600 pt-2 px-2'>{status}</p></div>
-                <div className="text-lg font-semibold text-Cblack flex justify-between pt-1 px-2">
+                <div className="text-xs md:text-lg font-semibold text-Cblack flex justify-between pt-1 px-2">
                   <p>{name}</p>
                   <p>Rs.{price}</p>
                 </div>
-                <p className="text-sm text-tgray mx-2">{category}</p>
+                <p className="text-[10px] md:text-sm text-tgray mx-2">{category}</p>
               </div>
-              </Link>
+              
   </main>
   
   );

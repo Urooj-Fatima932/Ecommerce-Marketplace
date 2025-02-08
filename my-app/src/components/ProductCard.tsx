@@ -3,37 +3,55 @@
 import Image, { StaticImageData } from 'next/image';
 
 interface ProductCardProps {
+  _id:string
   image: StaticImageData | string; // Support both StaticImageData and string for image
   name: string;                   // Product name
-  price: string;                  // Product price
-  category: string;               // Category like "Men's Shoes"
+  price: number;                  // Product price
+               // Category like "Men's Shoes"
   className?:string
+ 
+  alt:string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ image, name, price, category,className}) => {
+const ProductCard: React.FC<ProductCardProps> = ({ image, name,alt="Image", price,className,}) => {
   return (
-    <div className={`w-[420] h-[480px]   items-start ${className}`}>
-      {/* Image Section */}
-      <div className="">
-        <Image
-          src={typeof image === 'string' ? image : image.src} // Handle both string and StaticImageData
-          alt={name}
-          width={300}
-          height={200}
-          className="object-cover w-[full]"
-          layout= "responsive"
-        />
-      </div>
+    <main>
+    
+              <div
+               
+                className="p-4  overflow-hidden flex flex-col border-none outline-none group relative shadow-md"
+              >
+                {/* Image Section */}
+                <div className="relative max-h-[75%] overflow-hidden">
+                  <Image
+                    src={image}
+                    alt={alt}
+                    width={441}
+                    height={441}
+                    className="object-cover w-full h-auto transition-all group-hover:brightness-75"
+                  />
 
-      {/* Text Section */}
-      <div className="p-4">
- <div className= " w-[100%] flex justify-between">
-        <h3 className='font-semibold'>{name}</h3> {/* Product Name */}
-        <p className='font-semibold'>${price}</p> {/* Product Price */}
- </div>
-        <p className='text-sm text-[#757575]'>{category}</p> {/* Product Category */}
-      </div>
-    </div>
+                  {/* "Shop" Text */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span
+                      className="text-white font-semibold text-lg translate-y-full group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out"
+                    >
+                      Shop
+                    </span>
+                  </div>
+                </div>
+
+                {/* Product Details */}
+                <div><p className='font-[500] text-orange-600 pt-2 px-2'>{status}</p></div>
+                <div className="text-xs md:text-lg font-semibold text-Cblack flex justify-between pt-1 px-2">
+                  <p>{name}</p>
+                  <p>Rs.{price}</p>
+                </div>
+               
+              </div>
+              
+  </main>
+  
   );
 };
 

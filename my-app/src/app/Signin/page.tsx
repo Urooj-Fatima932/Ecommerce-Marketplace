@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Button from "@/components/Button";
-import InputField from "@/components/ui/input";
+import {Input} from "@/components/ui/input";
 import Checkbox from "@/components/MyCheckbox";
 import CountrySelector from "@/components/ui/Myselect";
 
@@ -28,27 +28,27 @@ function Signin() {
               Create your Nike Member profile and get first access to the very
               best of Nike products, inspiration, and community.
             </p>
-            <InputField
+            <Input
               type="email"
               placeholder="Enter Email"
               className="w-full mb-4"
             />
-            <InputField
+            <Input
               type="password"
               placeholder="Enter Password"
               className="w-full mb-4"
             />
-            <InputField
+            <Input
               type="text"
               placeholder="First Name"
               className="w-full mb-4"
             />
-            <InputField
+            <Input
               type="text"
               placeholder="Last Name"
               className="w-full mb-4"
             />
-            <InputField
+            <Input
               type="text"
               placeholder="Date Of Birth"
               className="w-full mb-4"
@@ -64,10 +64,10 @@ function Signin() {
               className="my-4"
             />
             <Button text="Join Us" className="rounded-md w-full " />
-            <p className="text-sm text-gray-500 mt-4">
+            <p className="text-sm text-gray-500 mt-4 text-center sm:text-left">
               Already a Member?{" "}
               <Link href="/Login" className="underline text-black">
-                Sign In
+              Sign In
               </Link>
             </p>
           </div>

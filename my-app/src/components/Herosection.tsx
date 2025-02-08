@@ -27,7 +27,7 @@ function Hero() {
             className="w-full h-auto"
           />
         </div>
-        <div className="text-center mt-8">
+        <div className="text-center space-y-6 mt-8">
           <p>First Look</p>
           <h1 className="text-3xl font-semibold md:text-[55px]">
             NIKE AIR MAX PULSE

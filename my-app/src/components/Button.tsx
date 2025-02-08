@@ -4,13 +4,18 @@ interface ButtonProps {
     text: string; 
     className?:string // The text that will appear on the button
     // Optional onClick handler
-  }
+    onClick?: () => void;
+    type?:any
+    disabled?:any
+}
   
-  const Button: React.FC<ButtonProps> = ({ className,text }) => {
+  const Button: React.FC<ButtonProps> = ({ className,type,text,onClick,disabled }) => {
     return (
       <button
-        
-        className={`bg-black ${className} text-white font-medium py-2 px-5  rounded-[20px] hover:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-400`}
+        onClick={onClick}
+        type={type}
+        disabled={disabled}
+        className={`bg-black ${className} text-white font-medium py-2 px-5  rounded-[20px] hover:bg-zinc-600`}
       >
         {text}
       </button>

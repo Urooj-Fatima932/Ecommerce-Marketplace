@@ -1,9 +1,23 @@
+import { Toaster } from "@/components/ui/toaster"
 import type { Metadata } from "next";
+import { dark } from '@clerk/themes'
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import {Roboto} from "next/font/google"
+import { CartProvider } from "@/context/cartContext";
 import Footer from "@/components/Footer"; 
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
+
+import { SelectProvider } from "@/context/selectContext";
+import { WishlistProvider } from "@/context/WishContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -16,6 +30,7 @@ const geistMono = Geist_Mono({
 
 const roboto = Roboto({
   subsets: ['latin'],
+  variable: "--font-roboto",
   weight: ['400', '500', '700'],
   style: ['normal'],
 });
@@ -31,14 +46,39 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider appearance={{
+      variables: {
+        colorPrimary: 'blue',
+            colorText: 'black'}}}
+    >
     <html lang="en">
       <body
         className={`${roboto.className} antialiased`}
       >
+       <CartProvider >
+      
+      <SelectProvider>
+      <WishlistProvider>
+      <SignedOut>
+              
+              
+            </SignedOut>
+            <SignedIn >
+              
+            </SignedIn>
         <Navbar />
         {children}
-        <Footer/>
+        <Toaster />
+        <Footer />
+        </WishlistProvider>
+      </SelectProvider>
+     
+    </CartProvider>
+    
+        
       </body>
     </html>
+    
+    </ClerkProvider>
   );
 }
