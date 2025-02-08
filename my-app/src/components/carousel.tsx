@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react'; // Replace with your icon library
-import { client } from '@/sanity/lib/client'; // Import your client
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -44,13 +43,14 @@ interface props{
         }
       } catch (err) {
         setError('Failed to fetch data');
+        console.log(error,err)
       } finally {
         setLoading(false);
+        console.log(loading)
       }
       }
       
       fetchData();
-      console.log(wshoes)
     },[])
    
   const sliderRef = useRef<Slider | null>(null); // Reference for the slider

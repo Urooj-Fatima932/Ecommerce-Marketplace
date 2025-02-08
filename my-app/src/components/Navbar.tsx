@@ -4,7 +4,6 @@ import Link from "next/link";
 import {ShoppingBag, Heart, X, AlignRight, User } from "lucide-react";
 import { useState } from "react";
 import TopHeader from "./TopHeader";
-import Searchbar from "./searchBar";
 import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
 function MyNav() {
   const { isSignedIn } = useUser(); 

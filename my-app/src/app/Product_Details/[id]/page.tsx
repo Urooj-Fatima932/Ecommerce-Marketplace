@@ -1,6 +1,5 @@
 
 import { client } from "@/sanity/lib/client";
-import { Heart, ShoppingCart } from "lucide-react";
 import SelectDemo from "@/components/selectSize";
 import * as React from "react";
 

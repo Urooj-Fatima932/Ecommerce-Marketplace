@@ -33,19 +33,21 @@ function Carousel3() {
           console.log(result.data)
         } else {
           setError(result?.error || 'Unknown error');
+         
         }
       } else {
         setError(result?.error || 'Unknown error');
       }
     } catch (err) {
       setError('Failed to fetch data');
+      console.log(error,loading,err)
     } finally {
       setLoading(false);
     }
     }
     
     fetchData();
-    console.log(wshoes)
+    
   },[])
  
 

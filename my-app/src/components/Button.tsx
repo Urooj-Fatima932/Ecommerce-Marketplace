@@ -5,8 +5,8 @@ interface ButtonProps {
     className?:string // The text that will appear on the button
     // Optional onClick handler
     onClick?: () => void;
-    type?:any
-    disabled?:any
+    type?:string|any
+    disabled?:string|any
 }
   
   const Button: React.FC<ButtonProps> = ({ className,type,text,onClick,disabled }) => {

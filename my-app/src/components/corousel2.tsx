@@ -1,7 +1,7 @@
 'use client'
  import Image from 'next/image';
  import React, {useRef, useState,useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Key } from 'lucide-react'; // Replace with your icon library
+import { ChevronLeft, ChevronRight} from 'lucide-react'; // Replace with your icon library
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -41,13 +41,14 @@ function Carousel2() {
         }
       } catch (err) {
         setError('Failed to fetch data');
+        console.log(loading,error,err)
       } finally {
         setLoading(false);
       }
       }
       
       fetchData();
-      console.log(wshoes)
+      
     },[])
    
     const sliderRef = useRef<Slider | null>(null); // Reference for the slider
@@ -89,7 +90,7 @@ function Carousel2() {
             </div>
             <Slider ref={sliderRef} {...settings}>
               {wshoes.map((product) => (
-                <Link href={`Product_Details/${product._id}`} key={product._id}>
+                <Link href={`Product_Details/${product._id}`}  key={product._id}>
                 <div  className="p-4  flex flex-col  border-none outline-none group relative">
                   <div className='relative overflow-hidden'>
                   <Image className='object-cover w-full h-auto transition-all group-hover:brightness-75' src={product.image} alt={product.productName} width={441} height={441} />

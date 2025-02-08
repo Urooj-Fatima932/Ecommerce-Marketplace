@@ -1,7 +1,5 @@
 import { Toaster } from "@/components/ui/toaster"
 import type { Metadata } from "next";
-import { dark } from '@clerk/themes'
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import {Roboto} from "next/font/google"
@@ -9,24 +7,14 @@ import { CartProvider } from "@/context/cartContext";
 import Footer from "@/components/Footer"; 
 import {
   ClerkProvider,
-  SignInButton,
-  SignUpButton,
+
   SignedIn,
   SignedOut,
-  UserButton,
+  
 } from '@clerk/nextjs'
 
 import { SelectProvider } from "@/context/selectContext";
 import { WishlistProvider } from "@/context/WishContext";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 const roboto = Roboto({
   subsets: ['latin'],

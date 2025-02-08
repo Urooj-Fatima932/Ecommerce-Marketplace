@@ -7,14 +7,11 @@ interface ProductCardProps {
   name: string;                   // Product name
   price: number;                  // Product price
   category: string;               // Category like "Men's Shoes"
-  className?:string
-  color?:string;
-  href?:string;
   status:string;
   alt:string;
 }
 
-const ProductCard2: React.FC<ProductCardProps> = ({ image, name,alt="Image", price,color, category,className,status,href = '#'}) => {
+const ProductCard2: React.FC<ProductCardProps> = ({ image, name,alt="Image", price, category,status,}) => {
   return (
     <main>
     

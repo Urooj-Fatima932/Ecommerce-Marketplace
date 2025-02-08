@@ -45,6 +45,8 @@ function Products() {
         }
       } catch (err) {
         setError("Failed to fetch data");
+        console.log(err)
+        console.log(error)
       } finally {
         setLoading(false);
       }

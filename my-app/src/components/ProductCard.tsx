@@ -8,12 +8,12 @@ interface ProductCardProps {
   name: string;                   // Product name
   price: number;                  // Product price
                // Category like "Men's Shoes"
-  className?:string
+ 
  
   alt:string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ image, name,alt="Image", price,className,}) => {
+const ProductCard: React.FC<ProductCardProps> = ({ image, name,alt="Image", price,}) => {
   return (
     <main>
     

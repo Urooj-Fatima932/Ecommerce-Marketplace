@@ -6,11 +6,11 @@ import { useCart } from '@/context/cartContext'; // Adjust the import path
 import { useState } from 'react';
 import Button from '@/components/Button';
 
-import { loadStripe } from '@stripe/stripe-js';
+
 
 function Cart() {
   const { cartItems, removeFromCart, updateQuantity } = useCart(); // Use the useCart hook
-  const [loading, setLoading] = useState(false);
+
   // State to track selected items
   const [selectedItems, setSelectedItems] = useState<{ [key: string]: boolean }>({});
 
