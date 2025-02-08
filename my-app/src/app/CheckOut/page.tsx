@@ -1,11 +1,11 @@
 
 'use client'
 import Link from "next/link";
-import blueOutfit from "@/images/blueOutfit.png";
+
 import { PackageCheck } from "lucide-react";
 import Image from "next/image";
-import shoe4 from "@/images/shoe4.png";
-import InputField from "@/components/ui/input";
+
+import {Input} from "@/components/ui/input";
 
 function CheckOut() {
   return (
@@ -31,18 +31,19 @@ function CheckOut() {
 
           <section className="my-8">
             <h1 className="font-[500] text-xl md:text-2xl mb-4">Enter your name and address</h1>
-            <InputField type="text" placeholder="First Name" />
-            <InputField type="text" placeholder="Last Name" />
-            <InputField type="text" placeholder="Address Line 1" />
+            <Input type="text" placeholder="First Name" />
+            <Input type="text" placeholder="Last Name" />
+            <Input type="text" placeholder="Address Line 1" />
             <p className="text-xs text-[#757575] px-5">We do not ship to P.O box</p>
-            <InputField type="text" placeholder="Address Line 2" />
-            <InputField type="text" placeholder="Address Line 3" />
+            <Input type="text" placeholder="Address Line 2" />
+            <Input type="text" placeholder="Address Line 3" />
             <div className="flex flex-col md:flex-row gap-4">
               <div className="w-full md:w-[50%]">
-                <InputField type="text" placeholder="Postal Code" />
+                <Input
+                 type="text" placeholder="Postal Code" />
               </div>
               <div className="w-full md:w-[50%]">
-                <InputField type="text" placeholder="Locality" />
+                <Input type="text" placeholder="Locality" />
               </div>
             </div>
             <ul className="space-y-3 my-4">
@@ -61,15 +62,15 @@ function CheckOut() {
 
           <section>
             <h1 className="font-[500] text-xl md:text-2xl mb-4">What is your contact information?</h1>
-            <InputField type="text" placeholder="Email" />
+            <Input type="text" placeholder="Email" />
             <p className="text-xs text-[#757575] px-5">A confirmation email will be sent after checkout</p>
-            <InputField type="text" placeholder="Phone Number" />
+            <Input type="text" placeholder="Phone Number" />
             <p className="text-xs text-[#757575] px-5">A carrier might contact you to confirm delivery</p>
           </section>
 
           <section className="mt-5">
             <h1 className="font-[500] text-xl md:text-2xl mb-4">What is your PAN?</h1>
-            <InputField type="text" placeholder="PAN" />
+            <Input type="text" placeholder="PAN" />
             <p className="text-xs text-[#757575] px-5">
               Enter your PAN to enable payment with UPI, Net Banking or local card methods
             </p>
@@ -112,7 +113,7 @@ function CheckOut() {
           </h1>
           <div className="w-full flex flex-col gap-6">
             <div className="flex gap-4 items-start">
-              <Image alt="Outfit" src={blueOutfit} className="w-24 h-24" />
+              <Image alt="Outfit" src="/images/shoe1.jpg" width={60} height={60} className="w-24 h-24" />
               <ul>
                 <li>Nike Dri-FIT ADV TechKnit Ultra</li>
                 <li>Size L</li>
@@ -120,7 +121,7 @@ function CheckOut() {
               </ul>
             </div>
             <div className="flex gap-4 items-start">
-              <Image alt="Shoe" src={shoe4} className="w-24 h-24" />
+              <Image alt="Shoe" src="/images/shoe5.jpg"  width={60} height={60} className="w-24 h-24" />
               <ul>
                 <li>Nike Dri-FIT ADV TechKnit Ultra</li>
                 <li>Size L</li>

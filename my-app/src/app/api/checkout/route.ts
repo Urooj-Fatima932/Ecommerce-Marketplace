@@ -1,41 +1,46 @@
-import { NextResponse } from "next/server";
-import Stripe from "stripe";
+import { NextRequest, NextResponse } from "next/server";
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-    apiVersion: "2023-10-16",
-});
+// Cache to store payment intents based on the amount
+const paymentIntentsCache = new Map();
 
-export async function POST(req: Request) {
+export async function POST(request: NextRequest) {
     try {
-        const { cartItems } = await req.json();
-        console.log("Received cartItems:", cartItems);
-
-        if (!cartItems || cartItems.length === 0) {
-            return NextResponse.json({ error: "No items selected" }, { status: 400 });
+        // Ensure the Stripe secret key is available
+        if (!process.env.STRIPE_SECRET_KEY) {
+            throw new Error("Stripe secret key is missing");
         }
 
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ["card"],
-            mode: "payment",
-            line_items: cartItems.map((item: any) => ({
-                price_data: {
-                    currency: "usd",
-                    product_data: {
-                        name: item.name,
-                        images: [item.image],
-                    },
-                    unit_amount: item.price * 100,
-                },
-                quantity: item.quantity,
-            })),
-            success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
-            cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/failed`,
-        });
+        // Extract amount from the request body
+        const { amount } = await request.json();
 
-        console.log("Stripe session created:", session);
-        return NextResponse.json({ url: session.url });
+        console.log('amount check', amount);
+        
+        // Validate the amount: It must be a positive number
+        if (!Number(amount) || typeof amount !== "number" || amount <= 0) {
+            return NextResponse.json(
+                { error: "Invalid amount. It should be a positive number." },
+                { status: 400 }
+            );
+        }
+
+        // Create a new payment intent with Stripe
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: amount,
+            currency: "usd",
+            automatic_payment_methods: { enabled: true },
+        });        
+
+        // Store the client secret in the cache
+        paymentIntentsCache.set(amount, paymentIntent.client_secret);
+
+        // Return the client secret to the frontend
+        return NextResponse.json({ clientSecret: paymentIntent.client_secret });
     } catch (error) {
-        console.error("Stripe Checkout Error:", error);
-        return NextResponse.json({ error: "Error creating checkout session" }, { status: 500 });
+        console.error("Internal Error:", error);
+        return NextResponse.json(
+            { error: `Internal Server Error: ${error}` },
+            { status: 500 }
+        );
     }
 }

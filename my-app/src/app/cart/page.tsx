@@ -6,6 +6,8 @@ import { useCart } from '@/context/cartContext'; // Adjust the import path
 import { useState } from 'react';
 import Button from '@/components/Button';
 
+import { loadStripe } from '@stripe/stripe-js';
+
 function Cart() {
   const { cartItems, removeFromCart, updateQuantity } = useCart(); // Use the useCart hook
   const [loading, setLoading] = useState(false);
@@ -19,48 +21,8 @@ function Cart() {
       [itemId]: isSelected,
     }));
   };
-  const handleCheckout = async () => {
-    setLoading(true);
-    console.log(cartItems);
-  
-    // Filter selected cart items
-    const selectedCartItems = cartItems.filter(item => selectedItems[item.id]);
-    
-    // Check if any item is selected
-    if (selectedCartItems.length === 0) {
-      alert("Please select at least one item.");
-      setLoading(false);
-      return;
-    }
-  
-    try {
-      // Make POST request to create checkout session
-      const response = await fetch("/api/checkout-session", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json", // Set header for JSON request
-        },
-        body: JSON.stringify({ cartItems: selectedCartItems }), // Send only selected items
-      });
-  
-      const data = await response.json();
-      
-      if (response.ok) {
-        // Redirect to Stripe Checkout if session URL is received
-        window.location.href = data.url;
-      } else {
-        // Handle errors from the server
-        alert("Error creating checkout session.");
-      }
-    } catch (error) {
-      console.error("Error during checkout:", error);
-      alert("There was an error with the checkout process. Please try again.");
-    } finally {
-      setLoading(false); // Reset loading state
-    }
-  };
-  
 
+ 
   // Calculate subtotal based on selected items
   const subtotal = cartItems
     .filter((item) => selectedItems[item.id]) // Only count selected items
@@ -73,7 +35,7 @@ function Cart() {
   const handleQuantityChange = (itemId: string, newQuantity: number) => {
     updateQuantity(itemId, newQuantity);
   };
-console.log(cartItems)
+
   return (
     <main className="px-4 sm:px-6 md:px-8">
       <div className="w-full mx-[3] md:w-[75%] md:mx-auto mt-8 flex flex-col lg:flex-row gap-10">
@@ -84,8 +46,8 @@ console.log(cartItems)
           {/* Render Cart Items Dynamically */}
           {cartItems.length === 0 ? (
             <div>
-            <p>Your cart is empty.</p>
-            <Button text="Continue Shopping"/>
+              <p>Your cart is empty.</p>
+              <Button text="Continue Shopping" />
             </div>
           ) : (
             cartItems.map((item) => (
@@ -117,19 +79,20 @@ console.log(cartItems)
             <p>Total</p>
             <p>Rs. {total.toLocaleString()}</p> {/* Display dynamic total */}
           </div>
-          <hr className="border-gray-200 rounded" />
+        
+        <Link href="/CheckOut">
           <button 
-            className="text-sm bg-[#111111] text-white py-3 rounded-[30px] mb-6 hover:bg-gray-800"
-           
+            className="text-sm bg-[#111111] cursor-pointer w-full text-white py-3 rounded-[30px] mb-6 hover:bg-gray-800"
             disabled={subtotal === 0} // Disable checkout if nothing is selected
-            onClick={handleCheckout}
+          
           >
-           {loading ? "Processing..." : "Checkout"}
+          Checkout
           </button>
+          
+          </Link>
+          
         </div>
       </div>
-
-      
 
       {/* You Might Also Like */}
       <Carousel name="You Might Also Like" />
